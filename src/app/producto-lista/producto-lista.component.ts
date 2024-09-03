@@ -35,4 +35,13 @@ NgFor: any;
     editarProducto(id: number){
       this.enrutador.navigate(['editar-producto',id]); 
     }
+
+    eliminarProducto(id: number){
+      this.productServicio.eliminarProducto(id).subscribe(
+        {
+          next: (datos) => this.obtenerProductos(),
+          error: (errores) => console.log(errores)
+        }
+      );
+    }
   }

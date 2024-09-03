@@ -3,6 +3,7 @@ import { Producto } from '../producto';
 import { ProductoService } from '../producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-editar-producto',
@@ -31,10 +32,16 @@ export class EditarProductoComponent implements OnInit {
   }
 
 
-async  onSubmit() {
-    if (this.data.valid) {
-      console.log('Producto actualizado:', this.data.value);
-      // Aquí puedes agregar la lógica para actualizar el producto
-    }
+
+
+  
+  irProductoLista(){
+    this.enrutador.navigate(['/productos']);
   }
+
+  async guardarProducto(){ 
+      await firstValueFrom(this.productoServicio.editarProducto(this.id, this.producto));
+      this.irProductoLista();
+    }
+
 }

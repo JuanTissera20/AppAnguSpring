@@ -3,10 +3,10 @@
     <div class="container text-center" style="margin: 30px">
          <h3>Editar Producto</h3>
     </div>
-    <form (ngSubmit)="onSubmit()">
+    <form >
         <div class="mb-3">
           <label for="Descripcion" class="form-label">Descripcion del producto</label>
-          <input type="email" class="form-control" id="descripcion" name="descripcion" required="true" [(ngModel)]="producto.descripcion">
+          <input type="string" class="form-control" id="descripcion" name="descripcion" required="true" [(ngModel)]="producto.descripcion">
         </div>
         <div class="mb-3">
           <label for="Precio" class="form-label">Precio</label>
@@ -17,7 +17,7 @@
             <input type="number" step="any" class="form-control" id="existencia" name="existencia" [(ngModel)]="producto.existencia">
           </div>
         <div class="text-center">
-            <button type="submit"  
+            <button (click)="guardarProducto()" type="submit"  
                     class="btn btn-warning btn-sm me-3">Editar</button>
             <a href="/" class="btn btn-danger btn-sm">Regresar</a>        
         </div>
